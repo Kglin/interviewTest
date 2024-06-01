@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: interviewTest
+  template:
+    metadata:
+      labels:
+        app: interviewTest
+    spec:
+      containers:
+        - name: interviewTest
+          image: interviewTest/image:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATABASE_HOST
+              value: your-database-host
+            - name: DATABASE_PORT
+              value: your-database-port

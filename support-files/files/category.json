@@ -1,0 +1,10 @@
+[
+  {
+    "category": "clothing",
+    "object": ["shirt", "jeans", "hat"]
+  },
+  {
+    "category": "food",
+    "object": ["pasta", "potato chips", "chocolate"]
+  }
+]

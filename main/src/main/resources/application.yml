@@ -1,0 +1,11 @@
+spring:
+  autoconfigure:
+   exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+server:
+  port: 21000
+
+logging:
+  level:
+    root: error
+    net.interview: debug

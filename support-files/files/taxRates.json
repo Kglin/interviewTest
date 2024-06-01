@@ -1,0 +1,12 @@
+[
+  {
+    "location": "CA",
+    "tax":  0.0975,
+    "exempt": ["food"]
+  },
+  {
+    "location": "NY",
+    "tax": 0.08875,
+    "exempt": ["food", "clothing"]
+  }
+]
