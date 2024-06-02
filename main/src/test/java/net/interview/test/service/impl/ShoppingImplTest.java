@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 class ShoppingImplTest {
 
     @InjectMocks
-    private ShoppingImpl shoppingService;
+    private ShoppingServiceImpl shoppingServiceImpl;
 
     @Mock
     private TaxRateUtils taxRateUtils;
@@ -46,7 +46,7 @@ class ShoppingImplTest {
         when(categoryUtils.getCategoryList()).thenReturn(MockCategoryInfo.getCategoryInfo());
 
         PurchaseOrder order = MockOrder.getOrderA();
-        PurchaseReceipt receipt = shoppingService.checkout(order);
+        PurchaseReceipt receipt = shoppingServiceImpl.checkout(order);
 
         Assertions.assertNotNull(receipt);
         Assertions.assertEquals(order.getItems(), receipt.getItems());
@@ -68,7 +68,7 @@ class ShoppingImplTest {
         when(categoryUtils.getCategoryList()).thenReturn(MockCategoryInfo.getCategoryInfo());
 
         PurchaseOrder order = MockOrder.getOrderB();
-        PurchaseReceipt receipt = shoppingService.checkout(order);
+        PurchaseReceipt receipt = shoppingServiceImpl.checkout(order);
 
         Assertions.assertNotNull(receipt);
         Assertions.assertEquals(order.getItems(), receipt.getItems());
@@ -90,7 +90,7 @@ class ShoppingImplTest {
         when(categoryUtils.getCategoryList()).thenReturn(MockCategoryInfo.getCategoryInfo());
 
         PurchaseOrder order = MockOrder.getOrderC();
-        PurchaseReceipt receipt = shoppingService.checkout(order);
+        PurchaseReceipt receipt = shoppingServiceImpl.checkout(order);
 
         Assertions.assertNotNull(receipt);
         Assertions.assertEquals(order.getItems(), receipt.getItems());
@@ -108,7 +108,7 @@ class ShoppingImplTest {
     void whenCheckoutWithNullOrder_thenThrowException() {
         PurchaseOrder order = null;
 
-        assertThrows(IllegalArgumentException.class, () -> shoppingService.checkout(order));
+        assertThrows(IllegalArgumentException.class, () -> shoppingServiceImpl.checkout(order));
     }
 
     @Test
@@ -134,7 +134,7 @@ class ShoppingImplTest {
 
         order.setItems(items);
 
-        assertThrows(IllegalArgumentException.class, () -> shoppingService.checkout(order));
+        assertThrows(IllegalArgumentException.class, () -> shoppingServiceImpl.checkout(order));
     }
 
     @Test
@@ -161,6 +161,6 @@ class ShoppingImplTest {
 
         when(taxRateUtils.getTaxRates()).thenThrow(new RuntimeException("Failed to retrieve tax rates"));
 
-        assertThrows(RuntimeException.class, () -> shoppingService.checkout(order));
+        assertThrows(RuntimeException.class, () -> shoppingServiceImpl.checkout(order));
     }
 }

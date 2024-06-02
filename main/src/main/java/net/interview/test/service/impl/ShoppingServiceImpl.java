@@ -24,7 +24,7 @@ import java.util.Optional;
  */
 
 @Service
-public class ShoppingImpl implements ShoppingService {
+public class ShoppingServiceImpl implements ShoppingService {
 
     @Autowired
     private TaxRateUtils taxRateUtils;
